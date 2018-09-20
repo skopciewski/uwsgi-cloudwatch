@@ -29,13 +29,13 @@ uwsgi --http :9090 --wsgi-file foobar.py --stats :9091 --stats-http
 Then, point `uwsgi-cloudwatch` to your stats server and specify a CloudWatch namespace:
 
 ```bash
-uwsgi-cloudwatch http://localhost:9091 --namespace "Foo/Bar/Baz"
+uwsgi-cloudwatch http://localhost:9091 --namespace "Foo/Bar/Baz" --dimensions "InstanceId=xyz,Foo=bar"
 ```
 
 By default, uwsgi-cloudwatch will report metrics every minute. If you wanted to report every 5 minutes:
 
 ```bash
-uwsgi-cloudwatch http://localhost:9091 --namespace "Foo/Bar/Baz" --frequency 300
+uwsgi-cloudwatch http://localhost:9091 --namespace "Foo/Bar/Baz" --dimensions "InstanceId=xyz,Foo=bar" --frequency 300
 ```
 
 To set the region, use `--region`
@@ -91,5 +91,5 @@ uWSGI Stats Server [exposes stats](http://uwsgi-docs.readthedocs.io/en/latest/St
 All metric names are prefixed with "uWSGI" by default, but you can also assign your own prefix:
 
 ```bash
-uwsgi-cloudwatch http://localhost:9091 --namespace "Foo/Bar/Baz" --metric-prefix "QuxCorge"
+uwsgi-cloudwatch http://localhost:9091 --namespace "Foo/Bar/Baz" --dimensions "InstanceId=xyz,Foo=bar" --metric-prefix "QuxCorge"
 ```
