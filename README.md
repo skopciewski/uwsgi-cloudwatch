@@ -12,10 +12,10 @@ Requirements
 - uWSGI Stats Server must run on a network socket over HTTP. Support for unix file sockets is not currently supported, but could be added in the future.
 - Python 3
 
-Install
+Install forked version
 -------
 ```bash
-pip install uwsgi-cloudwatch
+pip install git+https://github.com/skopciewski/uwsgi-cloudwatch.git
 ```
 
 Run
